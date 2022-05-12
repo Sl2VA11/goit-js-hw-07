@@ -8,44 +8,42 @@
 
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
+
 const galleryContainer = document.querySelector(".gallery");
 const pictureMarkup = createGalleryMarkup(galleryItems);
 
-galleryContainer.insertAdjacentHTML("beforeend", pictureMarkup);
-galleryContainer.addEventListener("click", onGalleryContainerClick);
+galleryContainer.insertAdjacentHTML("beforeend" , pictureMarkup)
+galleryContainer.addEventListener("click", onGalleryContainerClick)
 
-function createGalleryMarkup(galleryItems) { 
+function createGalleryMarkup(galleryItems) {
    return galleryItems.map(({ preview, original, description }) => {
-
-     return  `<div class= "gallery__item" >
-         <a class="gallery__link" href="large-image.jpg">
-            <img
-               class="gallery__image"
-               src="${preview}"
-               data-source="${original}"
-               alt="${description}"
-            />
-         </a>
-      </div>`;
+      
+   return `<div class="gallery__item">
+  <a class="gallery__link" href="large-image.jpg">
+    <img
+      class="gallery__image"
+      src="${preview}"
+      data-source="${original}"
+      alt="${description}"
+    />
+  </a>
+</div>`
    }).join('')
 }
 
-
 function onGalleryContainerClick(event) {
    event.preventDefault()
-
-   const isGallerySwatchEl = event.target.nodeName !== ("IMG");
-
+   const swatchEl = event.target;
+   const isGallerySwatchEl = swatchEl.nodeName !== ("IMG")
    if (isGallerySwatchEl) {
       return
    }
-   const swatchEl = event.target
 
-   const largeImgLink = swatchEl.dataset.source;
+   const largeImgLink = swatchEl.dataset.source
+   
 
-   basicLightbox.create(`  
-		<img width="1400" height="900" src="${largeImgLink}">
-
+   basicLightbox.create(`
+      <img width = "1400" height = "900" src = "${largeImgLink}">
    `).show()
 
 
