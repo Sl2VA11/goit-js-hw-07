@@ -22,7 +22,7 @@ function createGalleryMarkup(galleryItems) {
 
 
 let lightbox = new SimpleLightbox('.gallery a', { captionDelay: 250, captionsData: 'alt' });
-lightbox.on('show.SimpleLightbox', function () {
-   
-})
-console.log(galleryItems);
+lightbox.on('show.simplelightbox', function () {
+	
+});
+
